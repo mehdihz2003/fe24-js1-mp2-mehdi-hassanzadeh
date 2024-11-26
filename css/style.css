@@ -2,6 +2,75 @@
     display: none;
 }
 
+#playerName{
+    margin: 0px;
+    top: 0;
+    text-align: center;
+}
+
+header{
+    padding: 5vh;
+    margin-bottom: 2.5vh;
+    text-align: center;
+    color: white;
+    background-color: salmon;
+}
+
+footer{
+    padding: 5vh;
+    margin-top: 2.5vh;
+    text-align: center;
+    color: white;
+    background-color: salmon; 
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px; 
+}
+
+form label {
+    color: white;
+    background-color: salmon;
+}
+
+form label, input, button {
+    padding: 5px;
+    border: black solid 1px;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#playerWon{
+    margin-top: 10px;
+}
+
+#playAgain{
+    margin-top: 10px;
+}
+
+#info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    justify-content: left;
+    gap: 10px; 
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -11,11 +80,11 @@
 }
 
 body{
-    padding: 5%;
-    display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
 }
+
+
 
 .die{
     padding: 1%;

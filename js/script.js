@@ -1,3 +1,4 @@
+const container = document.querySelector('.container')
 const playerNameForm = document.querySelector('#playerNameForm');
 const nameInput = document.querySelector('#nameInput');
 const playerNameH2 = document.querySelector('#playerName');
@@ -7,6 +8,7 @@ const totalScoreH3 = document.querySelector('#totalScore');
 const roundAmountH3 = document.querySelector('#roundAmount');
 const roundScoreH3 = document.querySelector('#roundScore');
 const playerWonH3 = document.querySelector('#playerWon');
+const playAgainBtn = document.querySelector('#playAgain');
 
 const diceArray = ['zero', 'one', 'two', 'three', 'four', 'five', 'six'];
 let totalScore = 0;
@@ -16,6 +18,7 @@ let roundAmount = 0;
 playerNameForm.addEventListener('submit', playerNameSubmit);
 throwDiceBtn.addEventListener('click', throwDice);
 holdDiceBtn.addEventListener('click', holdDice);
+playAgainBtn.addEventListener('click', playAgain);
 
 function playerNameSubmit(event){
     event.preventDefault();
@@ -23,7 +26,7 @@ function playerNameSubmit(event){
     
     playerNameForm.remove();
     
-    playerNameH2.textContent = `Welcome, ${playerName}!`;
+    playerNameH2.textContent = `${playerName}`;
     
     playerNameH2.classList.remove('hidden');
     throwDiceBtn.classList.remove('hidden');
@@ -41,7 +44,7 @@ function throwDice(){
     }
 
     const dice = document.createElement('div');
-    document.body.append(dice);
+    container.append(dice);
 
     const diceNumber = getDiceNumber();
     dice.classList.add('die', diceArray[diceNumber]);
@@ -50,7 +53,7 @@ function throwDice(){
     
     //check if player lost the round or can keep going
     if(diceNumber!=1) {
-        roundScore += diceNumber;
+        roundScore += 1000;
         roundScoreH3.textContent = `Round score: ${roundScore}`;
     }
     else {
@@ -60,21 +63,23 @@ function throwDice(){
         roundAmountH3.textContent = `Round: ${roundAmount}`;
     }
 
-    //check if player won
-    if(totalScore >= 99) {
-        playerWonH3.classList.remove('hidden');
-    }
-
+    
 }
 
 function holdDice(){
     totalScore += roundScore;
     roundScore = 0;
     roundAmount++;
-
+    
     totalScoreH3.textContent = `Total score: ${totalScore}`;
     roundScoreH3.textContent = `Round score: ${roundScore}`;
     roundAmountH3.textContent = `Round: ${roundAmount}`;
+
+    //check if player won
+    if(totalScore >= 99) {
+        playerWonH3.classList.remove('hidden');
+        playAgainBtn.classList.remove('hidden');
+    }
 }
 
 function getDiceNumber() {
@@ -86,4 +91,17 @@ function addDice(dice, diceNumber) {
         const dieDot = document.createElement('div');
         dice.append(dieDot);
     }
+}
+
+function playAgain(){
+    totalScore = 0;
+    roundScore = 0;
+    roundAmount = 0;
+
+    totalScoreH3.textContent = 'Total score: 0';
+    roundScoreH3.textContent = 'Round score: 0';
+    roundAmountH3.textContent = 'Round: 1';
+    
+    playerWonH3.classList.add('hidden');
+    playAgainBtn.classList.add('hidden');
 }
