@@ -53,7 +53,7 @@ function throwDice(){
     
     //check if player lost the round or can keep going
     if(diceNumber!=1) {
-        roundScore += 1000;
+        roundScore += diceNumber;
         roundScoreH3.textContent = `Round score: ${roundScore}`;
     }
     else {
