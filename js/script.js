@@ -80,7 +80,7 @@ function holdDice(){
     roundAmountH3.textContent = `Round: ${roundAmount}`;
 
     //check if player won
-    if(totalScore >= 99) {
+    if(totalScore >= 100) {
         throwDiceBtn.disabled = true;
         holdDiceBtn.disabled = true;
         playerWonH3.classList.remove('hidden');
@@ -111,7 +111,6 @@ function playAgain(){
     roundAmountH3.textContent = 'Round: 1';
     
     throwDiceBtn.disabled = false;
-    holdDiceBtn.disabled = false;
 
     playerWonH3.classList.add('hidden');
     playAgainBtn.classList.add('hidden');
