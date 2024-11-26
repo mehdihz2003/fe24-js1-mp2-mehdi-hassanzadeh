@@ -42,6 +42,9 @@ function throwDice(){
     if (prevDice) {
         prevDice.remove();
     }
+    if(holdDiceBtn.disabled == true) {
+        holdDiceBtn.disabled = false;
+    }
 
     const dice = document.createElement('div');
     container.append(dice);
@@ -61,6 +64,7 @@ function throwDice(){
         roundScoreH3.textContent = "You lost the round!";
         roundAmount++;
         roundAmountH3.textContent = `Round: ${roundAmount}`;
+        holdDiceBtn.disabled = true;
     }
 
     
@@ -82,6 +86,8 @@ function holdDice(){
         playerWonH3.classList.remove('hidden');
         playAgainBtn.classList.remove('hidden');
     }
+
+    holdDiceBtn.disabled = true;
 }
 
 function getDiceNumber() {
