@@ -77,6 +77,8 @@ function holdDice(){
 
     //check if player won
     if(totalScore >= 99) {
+        throwDiceBtn.disabled = true;
+        holdDiceBtn.disabled = true;
         playerWonH3.classList.remove('hidden');
         playAgainBtn.classList.remove('hidden');
     }
@@ -102,6 +104,9 @@ function playAgain(){
     roundScoreH3.textContent = 'Round score: 0';
     roundAmountH3.textContent = 'Round: 1';
     
+    throwDiceBtn.disabled = false;
+    holdDiceBtn.disabled = false;
+
     playerWonH3.classList.add('hidden');
     playAgainBtn.classList.add('hidden');
 }
